@@ -1,0 +1,78 @@
+{
+  "category": [
+    {
+      "pizza": [
+        {
+          "title": "Margherita",
+          "description": "Tomate, mozzarella, basilic",
+          "price": "12.99",
+          "image": "https://static.vecteezy.com/system/resources/previews/024/589/166/large_2x/top-view-pizza-with-ai-generated-free-png.png"
+        },
+        {
+          "title": "Regina",
+          "description": "Tomate, mozzarella, jambon, champignons",
+          "price": "12.99",
+          "image": "https://static.vecteezy.com/system/resources/previews/024/589/160/large_2x/top-view-pizza-with-ai-generated-free-png.png"
+        },
+        {
+          "title": "Chorizo",
+          "description": "Tomate, mozzarella, chorizo, olives",
+          "price": "12.99",
+          "image": "https://static.vecteezy.com/system/resources/previews/023/507/247/non_2x/pizza-dish-free-png.png"
+        },
+        {
+          "title": "Verde",
+          "description": "Tomate, mozzarella, champignons, poivrons, olives",
+          "price": "12.99",
+          "image": "https://static.vecteezy.com/system/resources/previews/024/823/016/large_2x/corn-pizza-transparent-free-png.png"
+        }
+      ],
+      "entree": [
+        {
+          "title": "Burrata",
+          "description": "Burrata, tomates cerises, roquette, huile d'olive, vinaigre balsamique",
+          "price": "11.99",
+          "image": "https://jow.fr/_next/image?url=https%3A%2F%2Fstatic.jow.fr%2F880x880%2Frecipes%2FWytSpzQL1VG4jA.png&w=2560&q=100"
+        },
+        {
+          "title": "Burratina",
+          "description": "Burratina, tomates cerises, roquette, huile d'olive, vinaigre balsamique",
+          "price": "11.99",
+          "image": "https://i0.wp.com/paneolio.fr/wp-content/uploads/2021/11/burrata-fritta.png?fit=403%2C302&ssl=1"
+        },
+        {
+          "title": "Bufala",
+          "description": "Mozzarella di bufala, tomates cerises, roquette, huile d'olive, vinaigre balsamique",
+          "price": "12.99",
+          "image": "https://www.vallelata.it/wp-content/uploads/2014/06/Piatto_mozzarella-di-bufala_00015.png"
+        }
+      ],
+      "formules": [
+        {
+          "title": "Formule Duo",
+          "description1": "2 Pizzas classiques au choix",
+          "description2": "(Pizza signature + 2€)",
+          "price": "22.90"
+        },
+        {
+          "title": "Formule Trio",
+          "description1": "3 Pizzas classiques au choix + 1 Bouteille 1.5L",
+          "description2": "(Pizza signature + 2€)",
+          "price": "36.90"
+        },
+        {
+          "title": "Formule Familiale",
+          "description1": "4 Pizzas classiques au choix + 1 Bouteille 1.5L",
+          "description2": "(Pizza signature + 2€)",
+          "price": "48.90"
+        },
+        {
+          "title": "Formule Midi",
+          "description1": "1 Pizza classique ou Pâte + 1 Boisson 33CL",
+          "description2": "",
+          "price": "10.90"
+        }
+      ]
+    }
+  ]
+}
