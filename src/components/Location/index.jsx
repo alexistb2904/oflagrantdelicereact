@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { H1Styled } from "../Menu";
+import { useTheme } from "../../utils/hooks";
 
 const SectionStyled = styled.section`
   display: flex;
@@ -33,12 +34,13 @@ const StyledIframe = styled.iframe`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 function Location() {
+  const { theme } = useTheme();
   return (
     <SectionStyled id="location">
       <div>
         <div>
           <div>
-            <H1Styled>Où nous trouver ?</H1Styled>
+            <H1Styled theme={theme}>Où nous trouver ?</H1Styled>
             <StyledA href="https://www.google.com/maps?ll=48.926712,2.300325&z=14&t=m&hl=fr&gl=FR&mapclient=embed&cid=16428245358628184027">
               <p>12 Av. des Sévines, 92230 Gennevilliers</p>
             </StyledA>

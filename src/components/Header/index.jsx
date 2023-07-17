@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useTheme } from "../../utils/hooks";
 
 const BaseContainer = styled.div`
   font-family: "Poppins", sans-serif;
@@ -12,6 +12,9 @@ const BaseContainer = styled.div`
   border-radius: 2vw;
   position: relative;
   overflow: hidden;
+  background-color: ${({ theme }) =>
+    theme === "light" ? "transparent" : "#29282b"};
+  transition: 0.5s ease;
 `;
 
 const Content = styled.div`
@@ -34,15 +37,18 @@ const ImgStyled = styled.img`
 const H1Styled = styled.h1`
   font-size: 5rem;
   font-weight: 600;
-  color: #000000;
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
   margin-bottom: 2vh;
   margin-top: 2vh;
+  transition: 0.5s ease;
 `;
 
 const PStyled = styled.p`
   font-size: 3rem;
   font-weight: 400;
   margin-top: 0;
+  transition: 0.5s ease;
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
 `;
 
 const SpanStyled = styled.span`
@@ -55,13 +61,13 @@ export const Buttons = styled.button`
   font-weight: 600;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
-  color: grey;
+  color: ${({ theme }) => (theme === "light" ? "grey" : "#fffcf1")};
   background-color: transparent;
-  border: 0.2vh solid grey;
+  border: 0.2vh solid ${({ theme }) => (theme === "light" ? "grey" : "#fffcf1")};
   padding: 1.5vh 3vw;
   border-radius: 2vw;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.5s ease;
 `;
 
 const ButtonDiv = styled.div`
@@ -70,7 +76,7 @@ const ButtonDiv = styled.div`
 `;
 
 const MenuButton = styled(Buttons)`
-  color: white;
+  color: #fffcf1;
   background-color: orange;
   border: none;
   &:hover {
@@ -80,28 +86,32 @@ const MenuButton = styled(Buttons)`
 
 const OnPlaceButton = styled(Buttons)`
   &:hover {
-    color: darkgray;
-    border: 0.2vh solid darkgrey;
+    color: ${({ theme }) => (theme === "light" ? "darkgrey" : "grey")};
+    border: 0.2vh solid
+      ${({ theme }) => (theme === "light" ? "darkgrey" : "grey")};
   }
 `;
 
 function Header() {
+  const { theme } = useTheme();
   return (
     <header>
-      <BaseContainer>
+      <BaseContainer theme={theme}>
         <Content>
-          <H1Styled>O' Flagrant Délice</H1Styled>
-          <PStyled>
+          <H1Styled theme={theme}>O' Flagrant Délice</H1Styled>
+          <PStyled theme={theme}>
             Des Pizza Qui Sauront Satisfaire <SpanStyled>Toutes</SpanStyled> Vos
             Envies
           </PStyled>
           <ButtonDiv>
-            <Link to={"/#menu"}>
+            <a href={"#menu"}>
               <MenuButton id="menu-button">Voir le menu</MenuButton>
-            </Link>
-            <Link to={"/#location"}>
-              <OnPlaceButton id="onplace-button">Venir sur place</OnPlaceButton>
-            </Link>
+            </a>
+            <a href={"#location"}>
+              <OnPlaceButton theme={theme} id="onplace-button">
+                Venir sur place
+              </OnPlaceButton>
+            </a>
           </ButtonDiv>
         </Content>
         <ImgStyled

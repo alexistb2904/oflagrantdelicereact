@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Buttons } from "../Header";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../utils/hooks";
 
 const StyledArticle = styled.article`
   display: flex;
@@ -12,8 +13,10 @@ const StyledArticle = styled.article`
   z-index: 1;
   border-radius: 2vw;
   margin-bottom: 20%;
-  transition: 0.5s;
+  transition: 0.5s ease;
   padding: 0 1vw 3vh 1vw;
+  background-color: ${({ theme }) =>
+    theme === "light" ? "transparent" : "#29282b"};
   &:hover {
     transform: scale(1.05);
   }
@@ -37,12 +40,14 @@ const StyledImg = styled.img`
 const StyledH2 = styled.h2`
   margin-top: 6vw;
   margin-bottom: 1vh;
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
 `;
 
 const StyledP = styled.p`
   margin-top: 0;
   margin-bottom: 2vh;
   text-align: center;
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
 `;
 
 const StyledPDesc = styled(StyledP)`
@@ -58,14 +63,15 @@ const ButtonStyle = styled(Buttons)`
 `;
 
 function Item({ title, description, price, image }) {
+  const { theme } = useTheme();
   return (
-    <StyledArticle>
+    <StyledArticle theme={theme}>
       <ImgDiv>
         <StyledImg src={image} alt={title} />
       </ImgDiv>
-      <StyledH2>{title}</StyledH2>
+      <StyledH2 theme={theme}>{title}</StyledH2>
       <StyledPDesc>{description}</StyledPDesc>
-      <StyledP>{price} €</StyledP>
+      <StyledP theme={theme}>{price} €</StyledP>
       <Link to={""}>
         <ButtonStyle>En savoir plus</ButtonStyle>
       </Link>

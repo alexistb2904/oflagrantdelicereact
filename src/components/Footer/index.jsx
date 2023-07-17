@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
+import { useTheme } from "../../utils/hooks";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -38,7 +38,7 @@ const FooterA = styled.a`
   transition: 0.5s;
   margin-bottom: 1vh;
   &:hover {
-    color: black;
+    color: darkgray;
   }
 `;
 
@@ -49,10 +49,12 @@ const FooterTitle = styled.p`
   font-family: "Poppins", sans-serif;
   margin-bottom: 2vh;
   margin-top: 2vh;
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
 `;
 
 const FooterP = styled.p`
   margin: 0;
+  color: grey;
 `;
 
 const FooterEnd = styled.p`
@@ -63,45 +65,55 @@ const FooterEnd = styled.p`
 `;
 
 function Footer() {
+  const { theme } = useTheme();
   return (
     <>
       <FooterContainer>
         <Logo>
-          <Link to={""}>
+          <a href={"/"}>
             <img
               src={logo}
               alt={"Logo O' Flagrant Délice"}
               width="64px"
               height="64px"
             />
-          </Link>
+          </a>
         </Logo>
         <FooterSocial>
-          <FooterTitle>Nos Réseaux</FooterTitle>
+          <FooterTitle theme={theme}>Nos Réseaux</FooterTitle>
           <FooterA
+            theme={theme}
             href={"https://www.facebook.com/profile.php?id=100072043366694"}
           >
             <i className="ai-facebook-fill"></i> Facebook
           </FooterA>
-          <FooterA href={"https://www.instagram.com/ofdpizza/"}>
+          <FooterA theme={theme} href={"https://www.instagram.com/ofdpizza/"}>
             <i className="ai-instagram-fill"></i> Instagram
           </FooterA>
-          <FooterA href={""}>
+          <FooterA theme={theme} href={""}>
             <i className="ai-snapchat-fill"></i> Snapchat
           </FooterA>
         </FooterSocial>
         <FooterStyle id="contact">
-          <FooterTitle className="title">Adresse et Contact</FooterTitle>
-          <FooterP>12 Av. des Sévines, 92230 Gennevilliers</FooterP>
-          <FooterP>01 47 98 76 54</FooterP>
+          <FooterTitle theme={theme} className="title">
+            Adresse et Contact
+          </FooterTitle>
+          <FooterP theme={theme}>
+            12 Av. des Sévines, 92230 Gennevilliers
+          </FooterP>
+          <FooterP theme={theme}>01 47 98 76 54</FooterP>
         </FooterStyle>
         <FooterStyle>
-          <FooterTitle className="title">Horaires d'ouvertures</FooterTitle>
-          <FooterP>Tout les jours : 11h30 - 14h30 / 18h30 - 23h</FooterP>
-          <FooterP>Sauf vendredi : 18h30 - 23h</FooterP>
+          <FooterTitle theme={theme} className="title">
+            Horaires d'ouvertures
+          </FooterTitle>
+          <FooterP theme={theme}>
+            Tout les jours : 11h30 - 14h30 / 18h30 - 23h
+          </FooterP>
+          <FooterP theme={theme}>Sauf vendredi : 18h30 - 23h</FooterP>
         </FooterStyle>
       </FooterContainer>
-      <FooterEnd>
+      <FooterEnd theme={theme}>
         Site créé à des fins d'entraînement par{" "}
         <a href={"https://github.com/alexistb2904"}>alexistb2904</a>. Ce site
         n'a été en aucun cas approuvé par O' Flagrant Délice. Les informations
@@ -115,7 +127,7 @@ function Footer() {
           O' Flagrant Délice
         </a>
         afin d'obtenir des informations vérifiées. La source des images et
-        illustrations utilisées peut être trouvée <a href={""}>ici</a>.
+        illustrations utilisées peut être trouvée <a href={"/"}>ici</a>.
       </FooterEnd>
     </>
   );

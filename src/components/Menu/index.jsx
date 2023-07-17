@@ -3,17 +3,20 @@ import { Buttons } from "../Header";
 import Item from "../Item";
 import Formules from "../Formules";
 import menulist from "../../data/menulist.json";
+import { useTheme } from "../../utils/hooks";
 
 const Container = styled.div`
   font-family: "Poppins", sans-serif;
 `;
 
 export const H1Styled = styled.h1`
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
   font-family: "Poppins", sans-serif;
   font-variant: all-small-caps;
   text-align: center;
   font-weight: 600;
   font-size: 3rem;
+  transition: 0.5s ease;
 `;
 
 const MenuButtons = styled.div`
@@ -51,19 +54,20 @@ const pizzas = menulist.category[0].pizza;
 const entrees = menulist.category[0].entree;
 const formules = menulist.category[0].formules;
 function Menu() {
+  const { theme } = useTheme();
   return (
     <section id="menu">
       <Container>
-        <H1Styled>Notre Menu</H1Styled>
+        <H1Styled theme={theme}>Notre Menu</H1Styled>
         <MenuButtons>
           <a href="#pizza">
-            <MenuButton>Pizza</MenuButton>
+            <MenuButton theme={theme}>Pizza</MenuButton>
           </a>
           <a href="#entree">
-            <MenuButton>Entrée</MenuButton>
+            <MenuButton theme={theme}>Entrée</MenuButton>
           </a>
           <a href="#formules">
-            <MenuButton>Formules</MenuButton>
+            <MenuButton theme={theme}>Formules</MenuButton>
           </a>
         </MenuButtons>
         <div>
@@ -92,8 +96,8 @@ function Menu() {
         </div>
       </Container>
       <Container>
-        <H1Styled>Nos Formules</H1Styled>
-        <FormuleGrid>
+        <H1Styled theme={theme}>Nos Formules</H1Styled>
+        <FormuleGrid id="formules">
           {formules.map((formule, index) => (
             <Formules
               key={`${formule.title}-${index}`}

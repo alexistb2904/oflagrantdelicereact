@@ -9,6 +9,8 @@ import { createGlobalStyle } from "styled-components";
 import Menu from "./components/Menu";
 import Location from "./components/Location";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./utils/context";
+import { useTheme } from "./utils/hooks";
 
 const StyledGlobalStyle = createGlobalStyle`
   html {
@@ -16,10 +18,18 @@ const StyledGlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #fffcf1;
-    padding: 0 5%;
+    background-color: ${({ theme }) =>
+      theme === "light" ? "#fffcf1" : "#28292c"};
+    padding: 1% 5%;
+    transition: 0.5s ease;
   }
 `;
+
+function GlobalStyle() {
+  const { theme } = useTheme();
+
+  return <StyledGlobalStyle theme={theme} />;
+}
 
 const domNode = document.getElementById("root");
 const root = createRoot(domNode);
@@ -27,12 +37,14 @@ const root = createRoot(domNode);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <StyledGlobalStyle />
-      <Navigation />
-      <Header />
-      <Menu />
-      <Location />
-      <Footer />
+      <ThemeProvider>
+        <GlobalStyle />
+        <Navigation />
+        <Header />
+        <Menu />
+        <Location />
+        <Footer />
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );

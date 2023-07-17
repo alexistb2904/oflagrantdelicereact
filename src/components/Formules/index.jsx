@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import { useTheme } from "../../utils/hooks";
+
+const StyledH2 = styled.h2`
+  margin-bottom: 1vh;
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
+`;
 
 const StyledArticle = styled.article`
   display: flex;
@@ -10,8 +16,10 @@ const StyledArticle = styled.article`
   z-index: 1;
   border-radius: 2vw;
   margin-bottom: 5%;
-  transition: 0.5s;
+  transition: 0.5s ease;
   padding: 0 1vw 3vh 1vw;
+  background-color: ${({ theme }) =>
+    theme === "light" ? "transparent" : "#29282b"};
 
   &:last-of-type {
     grid-row-start: 2;
@@ -27,6 +35,8 @@ const ArticleP = styled.p`
   margin-top: 1vh;
   margin-bottom: 0;
   text-align: center;
+  color: ${({ theme }) => (theme === "light" ? "black" : "#fffcf1")};
+  transition: 0.5s ease;
 `;
 
 const ArticlePrice = styled(ArticleP)`
@@ -36,12 +46,13 @@ const ArticlePrice = styled(ArticleP)`
 `;
 
 function Formules({ title, description1, description2, price }) {
+  const { theme } = useTheme();
   return (
-    <StyledArticle>
-      <h2>{title}</h2>
-      <ArticleP>{description1}</ArticleP>
-      <ArticleP>{description2}</ArticleP>
-      <ArticlePrice>{price} €</ArticlePrice>
+    <StyledArticle theme={theme}>
+      <StyledH2 theme={theme}>{title}</StyledH2>
+      <ArticleP theme={theme}>{description1}</ArticleP>
+      <ArticleP theme={theme}>{description2}</ArticleP>
+      <ArticlePrice theme={theme}>{price} €</ArticlePrice>
     </StyledArticle>
   );
 }
