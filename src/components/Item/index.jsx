@@ -73,7 +73,7 @@ function Item({ title, description, price, image }) {
       <StyledPDesc>{description}</StyledPDesc>
       <StyledP theme={theme}>{price} €</StyledP>
       <Link to={""}>
-        <ButtonStyle>En savoir plus</ButtonStyle>
+        <ButtonStyle theme={theme}>En savoir plus</ButtonStyle>
       </Link>
     </StyledArticle>
   );
